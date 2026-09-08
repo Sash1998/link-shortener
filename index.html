@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortLink - Free URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🔗 ShortLink</h1>
+            <p class="subtitle">Shorten your URLs instantly</p>
+            
+            <div class="input-group">
+                <input type="url" id="longUrl" placeholder="Paste your long URL here..." required>
+                <button id="shortenBtn">Shorten!</button>
+            </div>
+            
+            <div id="result" style="display: none;">
+                <div class="result-box">
+                    <p>Your shortened link:</p>
+                    <div class="shortened-link">
+                        <span id="shortUrl"></span>
+                        <button id="copyBtn">📋 Copy</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
