@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Ad to Continue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 20px;
+        }
+        
+        .ad-container {
+            background: white;
+            border-radius: 30px;
+            padding: 60px 50px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+        }
+        
+        .ad-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #1a1a2e;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .ad-box {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 2px dashed #ddd;
+        }
+        
+        .ad-box .emoji {
+            font-size: 3rem;
+        }
+        
+        .ad-box p {
+            color: #333;
+            margin-top: 10px;
+        }
+        
+        .watch-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            color: #1a1a2e;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(247, 151, 30, 0.3);
+        }
+        
+        .watch-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(247, 151, 30, 0.5);
+        }
+        
+        .watch-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .timer {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 500px) {
+            .ad-container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .watch-btn {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ad-container">
+        <div class="ad-icon">📺</div>
+        <h1>WATCH AD TO CONTINUE</h1>
+        <p class="subtitle">Your destination link will open automatically after</p>
+        
+        <div class="ad-box">
+            <div class="emoji">🎬</div>
+            <p><strong>Sponsored Content</strong><br>Watch this ad to access your content</p>
+        </div>
+        
+        <a href="https://omg10.com/4/11754677" class="watch-btn" id="watchAdBtn">
+            ▶️ WATCH AD
+        </a>
+        <p class="timer" id="timerText">⏳ Click the button to continue</p>
+    </div>
+    
+    <script>
+        // Get the destination link from the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const destination = urlParams.get('dest');
+        
+        // Get the Watch Ad button
+        const watchBtn = document.getElementById('watchAdBtn');
+        const timerText = document.getElementById('timerText');
+        
+        // When user clicks Watch Ad button
+        watchBtn.addEventListener('click', function(e) {
+            // If there's a destination link, open it in a new tab
+            if (destination) {
+                // Open the destination in a new tab
+                window.open(decodeURIComponent(destination), '_blank');
+                timerText.textContent = '✅ Destination link opened!';
+            }
+            
+            // The ad link will open in the same tab
+            // because it's the href of the button
+        });
+        
+        // If there's no destination link, show a message
+        if (!destination) {
+            timerText.textContent = '⚠️ No destination link found';
+            timerText.style.color = '#ff6b6b';
+        }
+    </script>
+</body>
+</html>
